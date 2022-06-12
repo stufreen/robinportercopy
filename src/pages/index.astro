@@ -1,0 +1,21 @@
+---
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import {getProjects} from '../utils/getProjects';
+
+const projectCollection = await getProjects();
+console.log(projectCollection)
+---
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Robin Porter - Copywriter</title>
+	</head>
+	<body>
+		<h1>Robin Porter - Copywriter</h1>
+		{projectCollection.items.map(project => <div>
+			<h3>{project.title}</h3>
+			<div set:html={documentToHtmlString(project.shortDescription.json)} />
+		</div>)}
+	</body>
+</html>
