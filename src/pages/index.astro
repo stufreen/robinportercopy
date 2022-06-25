@@ -1,5 +1,6 @@
 ---
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import Box from '../components/Box.astro';
+import HomepageProject from '../components/HomepageProject.astro';
 import {getProjects} from '../utils/getProjects';
 
 const projectCollection = await getProjects();
@@ -10,12 +11,51 @@ console.log(projectCollection)
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<title>Robin Porter - Copywriter</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+		<style is:global lang="scss">
+			:root {
+				--main-bg-color: #FFFFFF;
+				--main-text-color: #31343a;
+				--spacing-0: 0.25rem;
+				--spacing-1: 0.5rem;
+				--spacing-2: 1rem;
+				--spacing-3: 2rem;
+				--spacing-4: 3rem;
+				--breakpoint-small: 640px;
+			}
+
+			html {
+				font-family: 'Inter', sans-serif;
+				color: var(--main-text-color);
+				background-color: var(--main-bg-color);
+			}
+
+			body {
+				margin: 0;
+			}
+
+		</style>
+		<style>
+			.title {
+				display: block;
+				padding-bottom: var(--spacing-2);
+				border-bottom: 1px solid var(--main-text-color);
+				margin-top: 0;
+				margin-bottom: var(--spacing2);
+			}
+
+			.subtitle {
+				display: block;
+				font-size: 0.7em;
+			}	
+		</style>
 	</head>
 	<body>
-		<h1>Robin Porter - Copywriter</h1>
-		{projectCollection.items.map(project => <div>
-			<h3>{project.title}</h3>
-			<div set:html={documentToHtmlString(project.shortDescription.json)} />
-		</div>)}
+		<Box>
+			<h1 class="title">Robin Porter <span class="subtitle">Copywriter</span></h1>
+		</Box>
+		{projectCollection.items.map(project => <HomepageProject project={project} />)}
 	</body>
 </html>

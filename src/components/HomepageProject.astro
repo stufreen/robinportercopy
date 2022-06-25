@@ -1,0 +1,19 @@
+---
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import Box from './Box.astro';
+
+const {project} = Astro.props;
+---
+<style>
+.project-image {
+  max-width: 100%;
+}
+</style>
+
+<div>
+  <Box>
+    <h3>{project.title}</h3>
+    <div set:html={documentToHtmlString(project.shortDescription.json)} />
+  </Box>
+  <img class="project-image" src={project.coverImage.url} alt={project.coverImage.title} />
+</div>
