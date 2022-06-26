@@ -12,6 +12,7 @@
     "astro": "^1.0.0-beta.44"
   },
   "dependencies": {
+    "@cloudinary/url-gen": "^1.8.0",
     "@contentful/rich-text-html-renderer": "^15.13.1",
     "contentful": "^9.1.32",
     "sass": "^1.53.0"

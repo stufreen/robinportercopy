@@ -5,6 +5,8 @@ const CONTENTFUL_SPACE_ID = import.meta.env.CONTENTFUL_SPACE_ID;
 
 const CONTENTFUL_URL = `https://graphql.contentful.com/content/v1/spaces/${CONTENTFUL_SPACE_ID}`;
 
+console.log(CONTENTFUL_URL);
+
 export const getProjects = async () => {
   const response = await fetch(CONTENTFUL_URL, {
     method: "POST",
@@ -25,13 +27,7 @@ export const getProjects = async () => {
               longDescription {
                 json
               }
-              coverImage {
-                title
-                description
-                url
-                width
-                height
-              }
+              coverImage
             }
           }
         }

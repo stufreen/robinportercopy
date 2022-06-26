@@ -1,19 +1,33 @@
 ---
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import Box from './Box.astro';
+import {getCloudinaryImage} from '../utils/cloudinary';
 
 const {project} = Astro.props;
+const coverImage = project.coverImage.length > 0 ? project.coverImage[0] : null;
+const imageUrl = getCloudinaryImage(coverImage.public_id, 1600)
 ---
-<style>
+<style lang="scss">
+.project-title {
+  font-size: 1.2em;
+  margin-bottom: 0;
+}
+
+.project-description {
+  p {
+    margin-top: 0;
+  }
+}
+  
 .project-image {
-  max-width: 100%;
+  width: 100%;
 }
 </style>
 
 <div>
   <Box>
-    <h3>{project.title}</h3>
-    <div set:html={documentToHtmlString(project.shortDescription.json)} />
+    <h2 class="project-title">{project.title}</h2>
+    <div class="project-description" set:html={documentToHtmlString(project.shortDescription.json)} />
   </Box>
-  <img class="project-image" src={project.coverImage.url} alt={project.coverImage.title} />
+  <img class="project-image" src={imageUrl} />
 </div>
