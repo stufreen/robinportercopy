@@ -1,6 +1,6 @@
 ---
-import Box from '../components/Box.astro';
 import HomepageProject from '../components/HomepageProject.astro';
+import Nav from '../components/Nav.astro';
 import {getProjects} from '../utils/getProjects';
 
 const projectCollection = await getProjects();
@@ -11,19 +11,34 @@ console.log(projectCollection)
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<title>Robin Porter - Copywriter</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 		<style is:global lang="scss">
 			:root {
-				--main-bg-color: #FFFFFF;
-				--main-text-color: #31343a;
+				--main-bg-color: #FFF;
+				--main-text-color: #334;
 				--spacing-0: 0.25rem;
 				--spacing-1: 0.5rem;
 				--spacing-2: 1rem;
 				--spacing-3: 2rem;
 				--spacing-4: 3rem;
 				--breakpoint-small: 640px;
+			}
+
+			@font-face {
+				font-family: 'Inter';
+				font-style:  normal;
+				font-weight: 400;
+				font-display: swap;
+				src: url("../../Inter-Regular.woff2?v=3.19") format("woff2"),
+						url("../../Inter-Regular.woff?v=3.19") format("woff");
+			}
+
+			@font-face {
+				font-family: 'Inter';
+				font-style:  normal;
+				font-weight: 700;
+				font-display: swap;
+				src: url("../../Inter-Bold.woff2?v=3.19") format("woff2"),
+						url("../../Inter-Bold.woff?v=3.19") format("woff");
 			}
 
 			html {
@@ -34,28 +49,13 @@ console.log(projectCollection)
 
 			body {
 				margin: 0;
+				padding-top: 4rem;
 			}
 
-		</style>
-		<style>
-			.title {
-				display: block;
-				padding-bottom: var(--spacing-2);
-				border-bottom: 1px solid var(--main-text-color);
-				margin-top: 0;
-				margin-bottom: var(--spacing2);
-			}
-
-			.subtitle {
-				display: block;
-				font-size: 0.7em;
-			}	
 		</style>
 	</head>
 	<body>
-		<Box>
-			<h1 class="title">Robin Porter <span class="subtitle">Copywriter</span></h1>
-		</Box>
+		<Nav />
 		{projectCollection.items.map(project => <HomepageProject project={project} />)}
 	</body>
 </html>

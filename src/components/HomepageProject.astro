@@ -25,7 +25,7 @@ const imageUrl = getCloudinaryImage(coverImage.public_id, 1600)
 </style>
 
 <div>
-  <Box>
+  <Box slim>
     <h2 class="project-title">{project.title}</h2>
     <div class="project-description" set:html={documentToHtmlString(project.shortDescription.json)} />
   </Box>
