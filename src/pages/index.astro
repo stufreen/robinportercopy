@@ -11,6 +11,9 @@ console.log(projectCollection)
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<title>Robin Porter - Copywriter</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 		<style is:global lang="scss">
 			:root {
 				--main-bg-color: #FFF;
@@ -42,7 +45,7 @@ console.log(projectCollection)
 			}
 
 			html {
-				font-family: 'Inter', sans-serif;
+				font-family: 'Poppins', sans-serif;
 				color: var(--main-text-color);
 				background-color: var(--main-bg-color);
 			}
@@ -53,9 +56,34 @@ console.log(projectCollection)
 			}
 
 		</style>
+		<style lang="scss">
+			.project-wrapper {
+				display: grid;
+				grid-template-columns: 1fr;
+
+				@media (min-width: 600px) {
+					grid-template-columns: 1fr 1fr;
+					padding: var(--spacing-2);
+				}
+
+				@media (min-width: 1024px) {
+					grid-template-columns: 1fr 1fr 1fr;
+				}
+			}
+		</style>
 	</head>
 	<body>
 		<Nav />
-		{projectCollection.items.map(project => <HomepageProject project={project} />)}
+		<div class="project-wrapper">
+			{
+				projectCollection.items.map(
+					project => (
+						<div class="project-item">
+							<HomepageProject project={project} />
+						</div>
+					)
+				)
+			}
+		</div>
 	</body>
 </html>

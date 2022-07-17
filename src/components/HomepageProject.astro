@@ -8,12 +8,23 @@ const coverImage = project.coverImage.length > 0 ? project.coverImage[0] : null;
 const imageUrl = getCloudinaryImage(coverImage.public_id, 1600)
 ---
 <style lang="scss">
+.project-copy {
+  padding: var(--spacing-2);
+
+  @media (min-width: 600px) {
+    grid-template-columns: 1fr 1fr;
+    padding: var(--spacing-2) 0;
+  }
+}
+
 .project-title {
-  font-size: 1.2em;
+  font-size: 1.1em;
   margin-bottom: 0;
 }
 
 .project-description {
+  font-size: 0.85em;
+
   p {
     margin-top: 0;
   }
@@ -25,9 +36,9 @@ const imageUrl = getCloudinaryImage(coverImage.public_id, 1600)
 </style>
 
 <div>
-  <Box slim>
+  <div class="project-copy">
     <h2 class="project-title">{project.title}</h2>
     <div class="project-description" set:html={documentToHtmlString(project.shortDescription.json)} />
-  </Box>
+  </div>
   <img class="project-image" src={imageUrl} />
 </div>

@@ -13,7 +13,7 @@ opener.addEventListener("click", () => {
     animatedItems[i].style.opacity = 0;
     animatedItems[i].animate(
       [
-        { transform: "translateY(-0.3rem) rotateX(50deg)", opacity: 0 },
+        { transform: "translateY(-0.3rem) rotateX(10deg)", opacity: 0 },
         { transform: "translateY(0rem) rotateX(0deg)", opacity: 1 },
       ],
       {
