@@ -18,8 +18,10 @@ const [projectCollection, homePage] = await Promise.all([
     <title>Robin Porter | ACD & Copywriter</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <style is:global lang="scss">
@@ -53,7 +55,7 @@ const [projectCollection, homePage] = await Promise.all([
       }
 
       html {
-        font-family: "Poppins", sans-serif;
+        font-family: "Inter", sans-serif;
         color: var(--main-text-color);
         background-color: var(--main-bg-color);
       }
@@ -93,6 +95,19 @@ const [projectCollection, homePage] = await Promise.all([
         @media (min-width: 1024px) {
           font-size: 1.2rem;
           padding: var(--spacing-4);
+        }
+      }
+
+      .about-blurb {
+        line-height: 1.5em;
+        font-size: 0.9rem;
+
+        @media (min-width: 600px) {
+          font-size: 1rem;
+        }
+
+        @media (min-width: 1024px) {
+          font-size: 1.1rem;
         }
       }
     </style>
