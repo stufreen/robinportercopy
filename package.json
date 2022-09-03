@@ -9,7 +9,9 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "astro": "^1.0.0-beta.44"
+    "astro": "^1.0.0-beta.44",
+    "prettier": "^2.7.1",
+    "prettier-plugin-astro": "^0.5.4"
   },
   "dependencies": {
     "@cloudinary/url-gen": "^1.8.0",

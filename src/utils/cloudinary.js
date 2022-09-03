@@ -10,5 +10,5 @@ const cld = new Cloudinary({
 export const getCloudinaryImage = (publicId, width = undefined) => {
   const myImage = cld.image(publicId);
   myImage.quality(70).resize(fill().width(width));
-  return myImage.toURL();
+  return myImage;
 };

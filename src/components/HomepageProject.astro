@@ -1,44 +1,55 @@
 ---
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-import Box from './Box.astro';
-import {getCloudinaryImage} from '../utils/cloudinary';
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 
-const {project} = Astro.props;
-const coverImage = project.coverImage.length > 0 ? project.coverImage[0] : null;
-const imageUrl = getCloudinaryImage(coverImage.public_id, 1600)
+const { project } = Astro.props;
+const coverImage = project.coverImage;
 ---
+
 <style lang="scss">
-.project-copy {
-  padding: var(--spacing-2);
+  .project-copy {
+    padding: var(--spacing-2);
 
-  @media (min-width: 600px) {
-    grid-template-columns: 1fr 1fr;
-    padding: var(--spacing-2) 0;
+    @media (min-width: 600px) {
+      grid-template-columns: 1fr 1fr;
+      padding: 0 0 var(--spacing-2) 0;
+    }
   }
-}
 
-.project-title {
-  font-size: 1.1em;
-  margin-bottom: 0;
-}
-
-.project-description {
-  font-size: 0.85em;
-
-  p {
+  .project-title {
+    font-size: 1.1em;
+    margin-bottom: 0;
     margin-top: 0;
   }
-}
-  
-.project-image {
-  width: 100%;
-}
+
+  .project-description {
+    font-size: 0.85em;
+
+    p {
+      margin-top: 0;
+    }
+  }
+
+  .project-image {
+    width: 100%;
+  }
 </style>
 
 <div>
+  {
+    coverImage && (
+      <img
+        class="project-image"
+        src={`${coverImage.url}?w=600&fit=fill`}
+        alt={coverImage.title}
+      />
+    )
+  }
   <div class="project-copy">
     <h2 class="project-title">{project.title}</h2>
-    <div class="project-description" set:html={documentToHtmlString(project.shortDescription.json)} />
+    <div
+      class="project-description"
+      set:html={documentToHtmlString(project.shortDescription.json)}
+    >
+    </div>
   </div>
-  <img class="project-image" src={imageUrl} />
 </div>

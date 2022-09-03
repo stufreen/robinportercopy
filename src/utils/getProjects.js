@@ -27,7 +27,10 @@ export const getProjects = async () => {
               longDescription {
                 json
               }
-              coverImage
+              coverImage {
+                title
+                url
+              }
             }
           }
         }
@@ -35,5 +38,13 @@ export const getProjects = async () => {
     }),
   });
   const json = await response.json();
+
+  if (!json.data?.projectCollection) {
+    console.error("No projectCollection", JSON.stringify(json));
+    return {
+      items: [],
+    };
+  }
+
   return json.data.projectCollection;
 };

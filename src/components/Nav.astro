@@ -1,108 +1,116 @@
-<script src="./Nav.js" />
+<script src="./Nav.js"></script>
 <style lang="scss">
-.nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: var(--main-bg-color);
-}
-
-.heading {
-  margin: 0;
-  padding: var(--spacing-2);
-  display: block;
-  font-size: 2rem;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  box-sizing: border-box;
-}
-
-.toggle {
-  appearance: none;
-  border: none;
-  font-weight: bold;
-  background-color: transparent;
-  color: var(--main-text-color);
-  cursor: pointer;
-  padding: var(--spacing-2);
-  transition: background-color 0.2s;
-  
-  &:active {
-    background-color: #eee;
+  .nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--main-bg-color);
   }
 
-  svg {
-    width: 2rem;
-    height: 2rem;
-  }
-}
-
-.drawer {
-  background-color: black;
-  color: var(--main-bg-color);
-  padding-top: 0;
-  margin: 0;
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-
-  &.open {
+  .heading {
+    margin: 0;
+    padding: var(--spacing-2);
     display: block;
+    font-size: 2rem;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
   }
 
   .toggle {
-    color: var(--main-bg-color);
+    appearance: none;
+    border: none;
+    font-weight: bold;
+    background-color: transparent;
+    color: var(--main-text-color);
+    cursor: pointer;
+    padding: var(--spacing-2);
+    transition: background-color 0.2s;
 
     &:active {
-      background-color: #222;
+      background-color: #eee;
+    }
+
+    svg {
+      width: 2rem;
+      height: 2rem;
     }
   }
-}
 
-.nav-items {
-  margin: 0;
-  padding: var(--spacing-2);
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
+  .drawer {
+    background-color: black;
+    color: var(--main-bg-color);
+    padding-top: 0;
+    margin: 0;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
 
-  li {
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-bottom: var(--spacing-2);
-    perspective: 300px;
+    &.open {
+      display: block;
+    }
+
+    .toggle {
+      color: var(--main-bg-color);
+
+      &:active {
+        background-color: #222;
+      }
+    }
   }
-}
+
+  .nav-items {
+    margin: 0;
+    padding: var(--spacing-2);
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    li {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: var(--spacing-2);
+      perspective: 300px;
+    }
+  }
 </style>
 <style is:global>
-body.mobile-drawer-open {
-  overflow: hidden;
-}
+  body.mobile-drawer-open {
+    overflow: hidden;
+  }
 </style>
 <nav class="nav">
   <div class="header">
     <h1 class="heading">Robin Porter</h1>
-    <button id="menu-opener" class="toggle" aria-controls="nav-drawer">
+    <button id="menu-opener" class="toggle" aria-controls="menu-drawer">
       <svg class="menu" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
         <title>Open navigation menu</title>
-        <path d="M6 36v-3h36v3Zm0-10.5v-3h36v3ZM6 15v-3h36v3Z" fill="currentColor" />
+        <path
+          d="M6 36v-3h36v3Zm0-10.5v-3h36v3ZM6 15v-3h36v3Z"
+          fill="currentColor"></path>
       </svg>
     </button>
   </div>
-  <div id="menu-drawer" class="drawer" aria-live="polite" >
+  <div id="menu-drawer" class="drawer" aria-live="polite">
     <div class="header">
       <h1 class="heading">Robin Porter</h1>
       <button id="menu-closer" class="toggle" aria-controls="nav-drawer">
-        <svg class="times" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <svg
+          class="times"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
           <title>Close navigation menu</title>
-          <path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41z" fill="currentColor"/>
+          <path
+            d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41z"
+            fill="currentColor"></path>
         </svg>
       </button>
     </div>
