@@ -2,6 +2,7 @@ const opener = document.getElementById("menu-opener");
 const closer = document.getElementById("menu-closer");
 const drawer = document.getElementById("menu-drawer");
 const animatedItems = document.querySelectorAll("[data-menu-animated]");
+const links = document.querySelectorAll("#menu-drawer a");
 
 console.log(animatedItems);
 
@@ -34,7 +35,14 @@ opener.addEventListener("click", () => {
   }
 });
 
-closer.addEventListener("click", () => {
+function closeDrawer() {
   drawer.classList.remove("open");
   document.body.classList.remove("mobile-drawer-open");
-});
+}
+
+closer.addEventListener("click", closeDrawer);
+
+for (let i = 0; i < links.length; i++) {
+  const link = links[i];
+  links[i].addEventListener("click", closeDrawer);
+}

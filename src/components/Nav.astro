@@ -78,6 +78,16 @@
       font-weight: bold;
       margin-bottom: var(--spacing-2);
       perspective: 300px;
+
+      a {
+        text-decoration: none;
+        cursor: pointer;
+        color: white;
+
+        &:hover {
+          color: #ccc;
+        }
+      }
     }
   }
 </style>
@@ -115,8 +125,8 @@
       </button>
     </div>
     <ul class="nav-items">
-      <li data-menu-animated>About</li>
-      <li data-menu-animated>Projects</li>
+      <li data-menu-animated><a href="/#about">About</a></li>
+      <li data-menu-animated><a href="/#projects">Projects</a></li>
       <li data-menu-animated>Contact</li>
     </ul>
   </div>

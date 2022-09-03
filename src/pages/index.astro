@@ -1,17 +1,21 @@
 ---
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import HomepageProject from "../components/HomepageProject.astro";
 import Nav from "../components/Nav.astro";
 import { getProjects } from "../utils/getProjects";
+import { getPage } from "../utils/getPage";
 
-const projectCollection = await getProjects();
-console.log(JSON.stringify(projectCollection, null, 2));
+const [projectCollection, homePage] = await Promise.all([
+  getProjects(),
+  getPage("29Er1TVqlv7ayMPQomKmYq"),
+]);
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Robin Porter - Copywriter</title>
+    <title>Robin Porter | ACD & Copywriter</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -76,11 +80,33 @@ console.log(JSON.stringify(projectCollection, null, 2));
           padding: var(--spacing-4);
         }
       }
+
+      .about-wrapper {
+        padding: var(--spacing-2);
+        max-width: 40em;
+
+        @media (min-width: 600px) {
+          font-size: 1.1rem;
+          padding: var(--spacing-3);
+        }
+
+        @media (min-width: 1024px) {
+          font-size: 1.2rem;
+          padding: var(--spacing-4);
+        }
+      }
     </style>
   </head>
   <body>
     <Nav />
-    <div class="project-wrapper">
+    <div class="about-wrapper" id="about">
+      <div
+        class="about-blurb"
+        set:html={documentToHtmlString(homePage.fields.body)}
+      >
+      </div>
+    </div>
+    <div class="project-wrapper" id="projects">
       {
         projectCollection.items.map((project) => (
           <div class="project-item">
