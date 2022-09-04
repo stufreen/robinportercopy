@@ -5,6 +5,12 @@
     top: 0;
     width: 100%;
     background: var(--main-bg-color);
+    box-shadow: 0 0 2rem transparent;
+    transition: box-shadow 0.2s;
+
+    &.scrolled {
+      box-shadow: 0 0 2rem #ddd;
+    }
   }
 
   .heading {
@@ -12,7 +18,7 @@
     padding-left: var(--spacing-2);
     letter-spacing: 0.06em;
     display: block;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     text-transform: uppercase;
   }
 
@@ -100,7 +106,7 @@
     overflow: hidden;
   }
 </style>
-<nav class="nav">
+<nav class="nav" id="nav">
   <div class="header">
     <h1 class="heading">Robin Porter</h1>
     <button id="menu-opener" class="toggle" aria-controls="menu-drawer">

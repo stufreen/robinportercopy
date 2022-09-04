@@ -1,10 +1,10 @@
+const nav = document.getElementById("nav");
 const opener = document.getElementById("menu-opener");
 const closer = document.getElementById("menu-closer");
 const drawer = document.getElementById("menu-drawer");
 const animatedItems = document.querySelectorAll("[data-menu-animated]");
 const links = document.querySelectorAll("#menu-drawer a");
-
-console.log(animatedItems);
+let scrolled = false;
 
 opener.addEventListener("click", () => {
   drawer.classList.add("open");
@@ -24,14 +24,6 @@ opener.addEventListener("click", () => {
         fill: "both",
       }
     );
-    // animatedItems[i].style.opacity = 0;
-    // animatedItems[i],
-    //   300,
-    //   { transform: { translateX: "-0.5rem", rotateX: "10deg" }, opacity: 0 },
-    //   { transform: { translateX: "0rem", rotateX: "0deg" }, opacity: 1 },
-    //   animol.Easing.easeOutCubic,
-    //   30 * i
-    // );
   }
 });
 
@@ -44,5 +36,15 @@ closer.addEventListener("click", closeDrawer);
 
 for (let i = 0; i < links.length; i++) {
   const link = links[i];
-  links[i].addEventListener("click", closeDrawer);
+  link.addEventListener("click", closeDrawer);
 }
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 0 && !scrolled) {
+    scrolled = true;
+    nav.classList.add("scrolled");
+  } else if (window.scrollY <= 0 && scrolled) {
+    scrolled = false;
+    nav.classList.remove("scrolled");
+  }
+});
