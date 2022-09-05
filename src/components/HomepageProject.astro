@@ -3,11 +3,20 @@ import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 
 const { project } = Astro.props;
 const coverImage = project.fields.coverImage;
-
-console.log(coverImage);
 ---
 
 <style lang="scss">
+  .project-link {
+    display: block;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: #eeeeee;
+      box-shadow: 0 0 0 8px #eeeeee;
+      border-radius: 2px;
+    }
+  }
+
   .project-copy {
     padding: var(--spacing-2);
 
@@ -42,7 +51,7 @@ console.log(coverImage);
   }
 </style>
 
-<div>
+<a href={`/project/${project.fields.slug}`} class="project-link">
   {
     coverImage && (
       <img
@@ -60,4 +69,4 @@ console.log(coverImage);
     >
     </div>
   </div>
-</div>
+</a>
