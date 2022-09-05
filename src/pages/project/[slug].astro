@@ -1,0 +1,31 @@
+---
+import Head from "../../components/Head.astro";
+import Nav from "../../components/Nav.astro";
+import { getProjects } from "../../utils/getProjects";
+
+export async function getStaticPaths() {
+  const projectCollection = await getProjects();
+
+  if (!projectCollection) {
+    console.error("No projects");
+    return [];
+  }
+
+  return projectCollection.items.map((item) => {
+    return {
+      params: { slug: item.fields.slug },
+      props: item,
+    };
+  });
+}
+
+const item = Astro.props;
+---
+
+<html lang="en">
+  <Head />
+  <body>
+    <Nav />
+    <h1>{item.fields.title}</h1>
+  </body>
+</html>

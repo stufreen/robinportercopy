@@ -2,7 +2,9 @@
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 
 const { project } = Astro.props;
-const coverImage = project.coverImage;
+const coverImage = project.fields.coverImage;
+
+console.log(coverImage);
 ---
 
 <style lang="scss">
@@ -45,16 +47,16 @@ const coverImage = project.coverImage;
     coverImage && (
       <img
         class="project-image"
-        src={`${coverImage.url}?w=600&fit=fill`}
-        alt={coverImage.title}
+        src={`${coverImage.fields.file.url}?w=600&fit=fill`}
+        alt={coverImage.fields.title}
       />
     )
   }
   <div class="project-copy">
-    <h2 class="project-title">{project.title}</h2>
+    <h2 class="project-title">{project.fields.title}</h2>
     <div
       class="project-description"
-      set:html={documentToHtmlString(project.shortDescription.json)}
+      set:html={documentToHtmlString(project.fields.shortDescription)}
     >
     </div>
   </div>
