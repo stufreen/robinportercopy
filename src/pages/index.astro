@@ -10,7 +10,7 @@ const homePage = await getPage("29Er1TVqlv7ayMPQomKmYq");
 ---
 
 <html lang="en">
-  <Head />
+  <Head metaDescription={homePage.fields.metaDescription} />
   <style lang="scss">
     .project-wrapper {
       display: grid;

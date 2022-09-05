@@ -1,21 +1,18 @@
+---
+const { metaDescription } = Astro.props;
+---
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
+  <meta name="description" content={metaDescription} />
   <title>Robin Porter | ACD & Copywriter</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap"
-    rel="stylesheet"
-  />
   <style is:global lang="scss">
     :root {
       --main-bg-color: #fff;
       --secondary-bg-color: #eeeef2;
       --main-text-color: #334;
-      --secondary-text-color: #778;
+      --secondary-text-color: #667;
       --spacing-0: 0.25rem;
       --spacing-1: 0.5rem;
       --spacing-2: 1rem;
@@ -25,25 +22,25 @@
     }
 
     @font-face {
-      font-family: "Inter";
+      font-family: "Akkurat";
       font-style: normal;
       font-weight: 400;
       font-display: swap;
-      src: url("../../Inter-Regular.woff2?v=3.19") format("woff2"),
-        url("../../Inter-Regular.woff?v=3.19") format("woff");
+      src: url("../../Akkurat.woff2?v=1") format("woff2"),
+        url("../../Akkurat.woff?v=1") format("woff");
     }
 
     @font-face {
-      font-family: "Inter";
+      font-family: "Akkurat";
       font-style: normal;
       font-weight: 700;
       font-display: swap;
-      src: url("../../Inter-Bold.woff2?v=3.19") format("woff2"),
-        url("../../Inter-Bold.woff?v=3.19") format("woff");
+      src: url("../../Akkurat-Bold.woff2?v=1") format("woff2"),
+        url("../../Akkurat-Bold.woff?v=1") format("woff");
     }
 
     html {
-      font-family: "Inter", sans-serif;
+      font-family: "Akkurat", sans-serif;
       color: var(--main-text-color);
       background-color: var(--main-bg-color);
       overflow-y: scroll;

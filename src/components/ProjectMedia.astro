@@ -23,7 +23,7 @@ const { media, externalMediaUrls } = Astro.props;
       return (
         <img
           class="project-image"
-          src={`${item.fields.file.url}?w=1400&fit=fill`}
+          src={`${item.fields.file.url}?w=1400&fit=fill&fm=jpg&q=75`}
           alt={item.fields.title}
         />
       );
