@@ -25,6 +25,11 @@ import Frame from "./Frame.astro";
     display: block;
     font-size: 1.8rem;
     text-transform: uppercase;
+
+    .sub-heading {
+      font-size: 0.4em;
+      display: block;
+    }
   }
 
   .header {
@@ -115,7 +120,11 @@ import Frame from "./Frame.astro";
 <nav class="nav" id="nav">
   <Frame>
     <div class="header">
-      <a href="/"> <h1 class="heading">Robin Porter</h1></a>
+      <a href="/">
+        <h1 class="heading">
+          Robin Porter <span class="sub-heading">ACD & Copywriter</span>
+        </h1>
+      </a>
       <button id="menu-opener" class="toggle" aria-controls="menu-drawer">
         <svg
           class="menu"
@@ -133,7 +142,11 @@ import Frame from "./Frame.astro";
   <div id="menu-drawer" class="drawer" aria-live="polite">
     <Frame>
       <div class="header">
-        <a href="/"> <h1 class="heading">Robin Porter</h1></a>
+        <a href="/"
+          ><h1 class="heading">
+            Robin Porter <span class="sub-heading">ACD & Copywriter</span>
+          </h1>
+        </a>
         <button id="menu-closer" class="toggle" aria-controls="nav-drawer">
           <svg
             class="times"
@@ -150,7 +163,12 @@ import Frame from "./Frame.astro";
       <ul class="nav-items">
         <li data-menu-animated><a href="/#about">About</a></li>
         <li data-menu-animated><a href="/#projects">Projects</a></li>
-        <li data-menu-animated><a href="/#connect">Connect</a></li>
+        <li data-menu-animated>
+          <a
+            href="https://www.linkedin.com/in/robin-p-3288a83a/"
+            rel="noopener noreferrer nofollow">LinkedIn</a
+          >
+        </li>
       </ul>
     </Frame>
   </div>
