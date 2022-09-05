@@ -25,21 +25,11 @@ opener.addEventListener("click", () => {
       }
     );
   }
-
-  let videoPlayers = document.getElementsByTagName("vm-player");
-  for (let i = 0; i < videoPlayers.length; i++) {
-    videoPlayers[i].style.visibility = "hidden";
-  }
 });
 
 function closeDrawer() {
   drawer.classList.remove("open");
   document.body.classList.remove("mobile-drawer-open");
-
-  let videoPlayers = document.getElementsByTagName("vm-player");
-  for (let i = 0; i < videoPlayers.length; i++) {
-    videoPlayers[i].style.visibility = "visible";
-  }
 }
 
 closer.addEventListener("click", closeDrawer);

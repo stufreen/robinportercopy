@@ -11,6 +11,7 @@ import Frame from "./Frame.astro";
     background: var(--main-bg-color);
     box-shadow: 0 0 2rem transparent;
     transition: box-shadow 0.2s;
+    z-index: 1;
 
     &.scrolled {
       box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
@@ -149,7 +150,7 @@ import Frame from "./Frame.astro";
       <ul class="nav-items">
         <li data-menu-animated><a href="/#about">About</a></li>
         <li data-menu-animated><a href="/#projects">Projects</a></li>
-        <li data-menu-animated>Contact</li>
+        <li data-menu-animated><a href="/#connect">Connect</a></li>
       </ul>
     </Frame>
   </div>

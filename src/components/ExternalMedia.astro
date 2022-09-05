@@ -1,5 +1,5 @@
 ---
-import rawStylesCSS from "@vime/core/themes/default.css";
+import rawStylesCSS from "plyr/dist/plyr.css";
 
 const { url } = Astro.props;
 
@@ -35,9 +35,9 @@ const { service, videoId } = (() => {
 ---
 
 <script>
-  import { defineCustomElements } from "@vime/core";
+  import Plyr from "plyr";
 
-  defineCustomElements();
+  const player = new Plyr("#player");
 </script>
 
 <style is:inline set:html={rawStylesCSS}>
@@ -46,26 +46,33 @@ const { service, videoId } = (() => {
 
 <style>
   .video-player-wrapper {
-    width: 300px;
-    height: 300px;
+    aspect-ratio: 16 / 9;
   }
 </style>
 
 <div class="video-player-wrapper">
   {
     service === "youtube" && (
-      <vm-player playsinline aspectRatio="16:9">
-        <vm-youtube video-id={videoId} />
-        <vm-default-ui />
-      </vm-player>
+      <div id="player">
+        <iframe
+          src={`https://www.youtube.com/embed/${videoId}&iv_load_policy=3&modestbranding=1&playsinline=1&showinfo=0&rel=0&enablejsapi=1&wmode=transparent`}
+          allowfullscreen
+          allowtransparency
+          allow="autoplay"
+        />
+      </div>
     )
   }
   {
     service === "vimeo" && (
-      <vm-player playsinline aspectRatio="16:9">
-        <vm-vimeo video-id={videoId} noAutoAspectRatio />
-        <vm-default-ui />
-      </vm-player>
+      <div id="player">
+        <iframe
+          src={`https://player.vimeo.com/video/${videoId}?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media`}
+          allowfullscreen
+          allowtransparency
+          allow="autoplay"
+        />
+      </div>
     )
   }
 </div>
