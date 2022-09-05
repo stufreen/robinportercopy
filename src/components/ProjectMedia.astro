@@ -4,14 +4,28 @@ import ExternalMedia from "./ExternalMedia.astro";
 const { media, externalMediaUrls } = Astro.props;
 ---
 
-<p>Media</p>
-<pre>{JSON.stringify(media, null, 2)}</pre>
-
-<p>External</p>
-<pre>{JSON.stringify(externalMediaUrls, null, 2)}</pre>
-
+<style lang="scss">
+  .project-image {
+    aspect-ratio: 16 / 9;
+    max-width: 100%;
+    object-fit: cover;
+  }
+</style>
 {
-  externalMediaUrls.map((externalMediaUrl) => (
-    <ExternalMedia url={externalMediaUrl} />
-  ))
+  externalMediaUrls &&
+    externalMediaUrls.map((externalMediaUrl) => (
+      <ExternalMedia url={externalMediaUrl} />
+    ))
+}
+{
+  media &&
+    media.map((item) => {
+      return (
+        <img
+          class="project-image"
+          src={`${item.fields.file.url}?w=1400&fit=fill`}
+          alt={item.fields.title}
+        />
+      );
+    })
 }

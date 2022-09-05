@@ -5,6 +5,7 @@ import Nav from "../components/Nav.astro";
 import { getProjects } from "../utils/getProjects";
 import { getPage } from "../utils/getPage";
 import Head from "../components/Head.astro";
+import Frame from "../components/Frame.astro";
 
 const [projectCollection, homePage] = await Promise.all([
   getProjects(),
@@ -80,24 +81,26 @@ const [projectCollection, homePage] = await Promise.all([
   </style>
   <body>
     <Nav />
-    <h2 id="about" class="section-heading">About</h2>
-    <div class="about-wrapper">
-      <div
-        class="about-blurb"
-        set:html={documentToHtmlString(homePage.fields.body)}
-      >
+    <Frame>
+      <h2 id="about" class="section-heading">About</h2>
+      <div class="about-wrapper">
+        <div
+          class="about-blurb"
+          set:html={documentToHtmlString(homePage.fields.body)}
+        >
+        </div>
       </div>
-    </div>
-    <h2 id="projects" class="section-heading">Projects</h2>
-    <div class="project-wrapper">
-      {
-        projectCollection &&
-          projectCollection.items.map((project) => (
-            <div class="project-item">
-              <HomepageProject project={project} />
-            </div>
-          ))
-      }
-    </div>
+      <h2 id="projects" class="section-heading">Projects</h2>
+      <div class="project-wrapper">
+        {
+          projectCollection &&
+            projectCollection.items.map((project) => (
+              <div class="project-item">
+                <HomepageProject project={project} />
+              </div>
+            ))
+        }
+      </div>
+    </Frame>
   </body>
 </html>

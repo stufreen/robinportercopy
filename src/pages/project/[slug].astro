@@ -3,6 +3,7 @@ import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 
 import Head from "../../components/Head.astro";
 import Nav from "../../components/Nav.astro";
+import Frame from "../../components/Frame.astro";
 import ProjectMedia from "../../components/ProjectMedia.astro";
 import { getProjects } from "../../utils/getProjects";
 
@@ -23,39 +24,114 @@ export async function getStaticPaths() {
 }
 
 const item = Astro.props;
-
-console.log(item)
 ---
+
 <style lang="scss">
   .project-details-back {
     font-weight: bold;
-    text-decoration: underline;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: var(--spacing-3) 0;
+    color: var(--secondary-text-color);
+    display: inline-flex;
+    align-items: center;
+
+    svg {
+      width: 1.5em;
+      height: 1.5em;
+    }
+
+    span {
+      text-decoration: none;
+    }
   }
+
   .project-details-header {
     font-size: 1.3rem;
   }
+
   .project-details {
     padding: var(--spacing-2);
+
+    @media (min-width: 600px) {
+      padding: 0 var(--spacing-3);
+    }
+
+    @media (min-width: 1024px) {
+      padding: 0 var(--spacing-4);
+    }
+  }
+
+  .project-details-container {
+    @media (min-width: 1024px) {
+      display: flex;
+    }
+  }
+
+  .project-details-media {
+    max-width: 100%;
+
+    @media (min-width: 1024px) {
+      width: 66%;
+    }
+  }
+
+  .project-details-copy {
+    padding-top: var(--spacing-2);
+    max-width: 40em;
+
+    @media (min-width: 1024px) {
+      padding-top: none;
+      padding-left: var(--spacing-3);
+      padding-right: var(--spacing-2);
+      flex: 1;
+    }
   }
 </style>
 <style lang="scss" is:global>
   .project-details-description {
-    line-height: 1.5em;
+    line-height: 1.6em;
 
     p {
       margin-top: 0;
     }
   }
 </style>
-<html lang="en">
-  <Head />
-  <body>
-    <Nav />
+
+<Head />
+<body>
+  <Nav />
+  <Frame>
     <div class="project-details">
-      <ProjectMedia externalMediaUrls={item.fields.externalMediaUrls} media={item.fields.media} />
-      <a href="/" class="project-details-back">Back</a>
-      <h1 class="project-details-header">{item.fields.title}</h1>
-      <div class="project-details-description" set:html={documentToHtmlString(item.fields.longDescription)} />
+      <a href="/" class="project-details-back">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="1em"
+          height="1em"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 24 24"
+          ><path
+            fill="currentColor"
+            d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6l6 6l1.41-1.42Z"></path>
+        </svg>
+        <span>Back</span>
+      </a>
+      <div class="project-details-container">
+        <div class="project-details-media">
+          <ProjectMedia
+            externalMediaUrls={item.fields.externalMediaUrls}
+            media={item.fields.media}
+          />
+        </div>
+        <div class="project-details-copy">
+          <h1 class="project-details-header">{item.fields.title}</h1>
+          <div
+            class="project-details-description"
+            set:html={documentToHtmlString(item.fields.longDescription)}
+          >
+          </div>
+        </div>
+      </div>
     </div>
-  </body>
-</html>
+  </Frame>
+</body>

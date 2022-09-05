@@ -11,8 +11,8 @@ const coverImage = project.fields.coverImage;
     transition: all 0.2s;
 
     &:hover {
-      background-color: #eeeeee;
-      box-shadow: 0 0 0 8px #eeeeee;
+      background-color: var(--secondary-bg-color);
+      box-shadow: 0 0 0 8px var(--secondary-bg-color);
       border-radius: 2px;
     }
   }
@@ -43,7 +43,7 @@ const coverImage = project.fields.coverImage;
 <style lang="scss" is:global>
   .project-description {
     font-size: 0.85em;
-    color: #778;
+    color: var(--secondary-text-color);
 
     p {
       margin-top: 0;
