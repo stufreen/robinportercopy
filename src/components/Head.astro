@@ -4,12 +4,13 @@ const { metaDescription } = Astro.props;
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content={metaDescription} />
   <link rel="preload" href="/Inter-Regular.woff2?v=1" as="style" />
   <link rel="preload" href="/Inter-SemiBold.woff2?v=1" as="style" />
+  <link rel="preconnect" href="https://images.ctfassets.net" />
   <title>Robin Porter | ACD & Copywriter</title>
-  <style is:global lang="scss">
+  <style is:global lang="scss" is:inline>
     :root {
       --main-bg-color: #fff;
       --secondary-bg-color: #eeeef2;
