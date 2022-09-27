@@ -58,6 +58,7 @@ const coverImage = project.fields.coverImage;
         class="project-image"
         src={`${coverImage.fields.file.url}?w=800&fit=fill&fm=jpg&q=70`}
         alt={coverImage.fields.title}
+        loading="lazy"
       />
     )
   }
