@@ -6,21 +6,9 @@ const { metaDescription } = Astro.props;
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content={metaDescription} />
-  <link
-    rel="preload"
-    href="/Inter-Regular.woff2?v=1"
-    as="font"
-    crossorigin="anonymous"
-  />
-  <link
-    rel="preload"
-    href="/Inter-SemiBold.woff2?v=1"
-    as="font"
-    crossorigin="anonymous"
-  />
   <link rel="preconnect" href="https://images.ctfassets.net" />
   <title>Robin Porter | ACD & Copywriter</title>
-  <style is:global lang="scss">
+  <style is:inline>
     :root {
       --main-bg-color: #fff;
       --secondary-bg-color: #eeeef2;
