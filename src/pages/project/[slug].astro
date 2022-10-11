@@ -1,5 +1,6 @@
 ---
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import { documentToPlainTextString } from "@contentful/rich-text-plain-text-renderer";
 
 import Head from "../../components/Head.astro";
 import Nav from "../../components/Nav.astro";
@@ -113,7 +114,10 @@ const item = Astro.props;
     }
   </style>
 
-  <Head metaDescription={item.fields.longDescription} />
+  <Head
+    metaDescription={documentToPlainTextString(item.fields.longDescription)}
+    title={`${item.fields.title} | Robin Porter ACD & Copywriter`}
+  />
   <body>
     <Nav />
     <Frame>

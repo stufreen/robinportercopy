@@ -9,6 +9,7 @@
     "preview": "astro preview"
   },
   "devDependencies": {
+    "@contentful/rich-text-plain-text-renderer": "^15.12.1",
     "astro": "^1.1.5",
     "prettier": "^2.7.1",
     "prettier-plugin-astro": "^0.5.4"
